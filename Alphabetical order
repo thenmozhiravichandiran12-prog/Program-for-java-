@@ -1,0 +1,18 @@
+import java.util.Arrays;
+
+public class SortNames {
+    public static void main(String[] args) {
+
+        // Given names
+        String[] names = {"Priya", "Anu", "Kavi", "Divya", "Meena"};
+
+        // Sorting the names
+        Arrays.sort(names);
+
+        // Printing sorted names
+        System.out.println("Names in Alphabetical Order:");
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
+}
