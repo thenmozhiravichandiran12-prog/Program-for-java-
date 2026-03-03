@@ -1,0 +1,25 @@
+interface Father {
+    void showFather();
+}
+
+interface Mother {
+    void showMother();
+}
+
+// Child class implements two interfaces
+class Child implements Father, Mother {
+
+    public void showFather() {
+        System.out.println("Father's qualities");
+    }
+
+    public void showMother() {
+        System.out.println("Mother's qualities");
+    }
+
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.showFather();
+        c.showMother();
+    }
+}
