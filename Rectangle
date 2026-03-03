@@ -1,0 +1,23 @@
+class Rectangle {
+    int length;
+    int breadth;
+    int area;
+
+    // Constructor
+    Rectangle(int l, int b) {
+        length = l;
+        breadth = b;
+        area = length * breadth;
+    }
+
+    void display() {
+        System.out.println("Length = " + length);
+        System.out.println("Breadth = " + breadth);
+        System.out.println("Area of Rectangle = " + area);
+    }
+
+    public static void main(String[] args) {
+        Rectangle r1 = new Rectangle(10, 5);
+        r1.display();
+    }
+}
