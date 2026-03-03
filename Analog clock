@@ -1,0 +1,66 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.util.Date;
+
+/*
+<applet code="AnalogClock" width="400" height="400">
+</applet>
+*/
+
+public class AnalogClock extends Applet implements Runnable {
+
+    Thread t;
+
+    public void init() {
+        t = new Thread(this);
+        t.start();
+    }
+
+    public void run() {
+        while (true) {
+            repaint();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {}
+        }
+    }
+
+    public void paint(Graphics g) {
+
+        int centerX = 200;
+        int centerY = 200;
+        int radius = 100;
+
+        // Draw Clock Circle
+        g.drawOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+
+        // Get Current Time
+        Date d = new Date();
+        int hours = d.getHours();
+        int minutes = d.getMinutes();
+        int seconds = d.getSeconds();
+
+        // Calculate angles
+        int secondAngle = seconds * 6;
+        int minuteAngle = minutes * 6;
+        int hourAngle = (hours % 12) * 30 + minutes / 2;
+
+        // Draw Second Hand
+        int xSec = (int)(centerX + 80 * Math.sin(Math.toRadians(secondAngle)));
+        int ySec = (int)(centerY - 80 * Math.cos(Math.toRadians(secondAngle)));
+        g.setColor(Color.RED);
+        g.drawLine(centerX, centerY, xSec, ySec);
+
+        // Draw Minute Hand
+        int xMin = (int)(centerX + 70 * Math.sin(Math.toRadians(minuteAngle)));
+        int yMin = (int)(centerY - 70 * Math.cos(Math.toRadians(minuteAngle)));
+        g.setColor(Color.BLUE);
+        g.drawLine(centerX, centerY, xMin, yMin);
+
+        // Draw Hour Hand
+        int xHour = (int)(centerX + 50 * Math.sin(Math.toRadians(hourAngle)));
+        int yHour = (int)(centerY - 50 * Math.cos(Math.toRadians(hourAngle)));
+        g.setColor(Color.BLACK);
+        g.drawLine(centerX, centerY, xHour, yHour);
+    }
+}
