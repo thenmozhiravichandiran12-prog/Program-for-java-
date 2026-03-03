@@ -1,0 +1,31 @@
+import java.applet.Applet;
+import java.awt.*;
+
+/*
+<applet code="FontColorApplet" width="400" height="300">
+</applet>
+*/
+
+public class FontColorApplet extends Applet {
+
+    public void paint(Graphics g) {
+
+        // First Message - Red, Bold, Size 20
+        Font f1 = new Font("Arial", Font.BOLD, 20);
+        g.setFont(f1);
+        g.setColor(Color.RED);
+        g.drawString("Welcome to Java Applet", 50, 80);
+
+        // Second Message - Blue, Italic, Size 25
+        Font f2 = new Font("Times New Roman", Font.ITALIC, 25);
+        g.setFont(f2);
+        g.setColor(Color.BLUE);
+        g.drawString("Different Font & Size", 50, 140);
+
+        // Third Message - Green, Plain, Size 18
+        Font f3 = new Font("Courier", Font.PLAIN, 18);
+        g.setFont(f3);
+        g.setColor(Color.GREEN);
+        g.drawString("Colourful Text Display", 50, 200);
+    }
+}
