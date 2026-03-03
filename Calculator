@@ -1,0 +1,67 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class Calculator extends Frame implements ActionListener {
+
+    TextField t1, t2, result;
+    Button add, sub, mul, div;
+
+    Calculator() {
+
+        setTitle("Simple AWT Calculator");
+        setLayout(new FlowLayout());
+
+        t1 = new TextField(10);
+        t2 = new TextField(10);
+        result = new TextField(15);
+
+        add = new Button("Add");
+        sub = new Button("Sub");
+        mul = new Button("Mul");
+        div = new Button("Div");
+
+        add(t1);
+        add(t2);
+        add(add);
+        add(sub);
+        add(mul);
+        add(div);
+        add(result);
+
+        add.addActionListener(this);
+        sub.addActionListener(this);
+        mul.addActionListener(this);
+        div.addActionListener(this);
+
+        setSize(300, 200);
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        int num1 = Integer.parseInt(t1.getText());
+        int num2 = Integer.parseInt(t2.getText());
+        int res = 0;
+
+        if (e.getSource() == add)
+            res = num1 + num2;
+        else if (e.getSource() == sub)
+            res = num1 - num2;
+        else if (e.getSource() == mul)
+            res = num1 * num2;
+        else if (e.getSource() == div)
+            res = num1 / num2;
+
+        result.setText(String.valueOf(res));
+    }
+
+    public static void main(String[] args) {
+        new Calculator();
+    }
+}
